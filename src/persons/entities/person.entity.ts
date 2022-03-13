@@ -1,8 +1,11 @@
 import { IPerson } from './Iperson.interface';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { IProject } from '../../projects/entities/Iproject.interface';
+import { JoinColumn } from 'typeorm';
+import { EntityBase } from '../../common/utils/entity-base';
 
 @Entity()
-export class Person implements IPerson {
+export class Person extends EntityBase implements IPerson {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -11,4 +14,8 @@ export class Person implements IPerson {
 
   @Column()
   lastName: string;
+
+  @ManyToOne("Project")
+  @JoinColumn({ name:'project_id' })
+  project : IProject;
 }

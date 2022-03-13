@@ -14,7 +14,7 @@ export class User implements IUser {
   lastName: string;
 
   @Column()
-  login: string;
+  username: string;
 
   @Column()
   password: string;

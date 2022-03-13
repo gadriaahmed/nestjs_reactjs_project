@@ -1,11 +1,17 @@
 import { IProject } from './Iproject.interface';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { IPerson } from '../../persons/entities/Iperson.interface';
+import { EntityBase } from '../../common/utils/entity-base';
 
 @Entity()
-export class Project implements IProject {
+export class Project extends EntityBase implements IProject {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  name: string;
+  title: string;
+
+  @OneToMany('Person', 'project')
+  persons: IPerson[];
+
 }

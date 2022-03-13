@@ -1,4 +1,7 @@
+import { IPerson } from '../../persons/entities/Iperson.interface';
+
 export interface IProject {
   id:number;
-  name: string;
+  title: string;
+  persons: IPerson[];
 }
